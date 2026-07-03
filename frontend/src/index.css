@@ -26,6 +26,11 @@ code,
     color: #ffffff;
 }
 
+/* Hide the injected "Made with Emergent" badge */
+#emergent-badge {
+    display: none !important;
+}
+
 /* Subtle entrance animation used for section reveals */
 @keyframes fade-up {
     from {
