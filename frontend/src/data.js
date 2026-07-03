@@ -53,7 +53,7 @@ export const projects = [
     summary:
       "Econometric analysis of housing price trends using R.",
     tools: ["R", "Econometrics", "ggplot2"],
-    github: "#",
+    github: "https://github.com/chrisruzario/ireland-new-houses-econometrics",
     demo: "#",
   },
   {
@@ -61,7 +61,7 @@ export const projects = [
     summary:
       "Classification and insights project exploring startup performance factors.",
     tools: ["Python", "Classification", "EDA"],
-    github: "#",
+    github: "https://github.com/chrisruzario/startup-success-prediction",
     demo: "#",
   },
 ];
