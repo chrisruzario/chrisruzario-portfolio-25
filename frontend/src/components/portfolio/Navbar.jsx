@@ -33,7 +33,7 @@ export const Navbar = () => {
           data-testid="nav-logo"
           className="font-medium tracking-tight text-lg hover:opacity-70 transition-opacity"
         >
-          {profile.name}
+          {profile.name.replace(/\s+/g, "").toLowerCase()}
         </a>
 
         <div className="hidden md:flex items-center gap-8">
