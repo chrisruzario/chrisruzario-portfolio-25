@@ -28,6 +28,12 @@ OWNER_EMAIL = os.environ.get('OWNER_EMAIL', 'chris25cr7@gmail.com')
 if RESEND_API_KEY:
     resend.api_key = RESEND_API_KEY
 
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
+
 app = FastAPI()
 api_router = APIRouter(prefix="/api")
 
@@ -107,12 +113,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
-logger = logging.getLogger(__name__)
 
 
 @app.on_event("shutdown")
