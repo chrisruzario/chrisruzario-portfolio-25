@@ -1,0 +1,124 @@
+{
+  "project_name": "Chris Ruzario Portfolio",
+  "theme_archetype": {
+    "name": "Archetype 4: Swiss & High-Contrast",
+    "theme": "Light",
+    "rationale": "A pure black-and-white editorial aesthetic emphasizing authority, clarity, and precision. It perfectly bridges the gap between Business Analytics (professional, data-driven) and Computer Engineering (structured, technical), using massive whitespace and typographic hierarchy instead of decorative colors."
+  },
+  "colors": {
+    "background": "#FFFFFF",
+    "foreground": "#0A0A0A",
+    "muted_background": "#F9F9F9",
+    "muted_foreground": "#666666",
+    "border": "#E5E5E5",
+    "accent": "#000000",
+    "rules": [
+      "Strict monochrome palette. No bright colors whatsoever.",
+      "Use #0A0A0A for primary text (never pure black #000000 to reduce eye strain, though pure black is fine for solid shapes).",
+      "Use #666666 for secondary text (dates, tags, small descriptors).",
+      "Use #E5E5E5 for subtle 1px borders and dividers."
+    ]
+  },
+  "typography": {
+    "font_families": {
+      "heading": "'Helvetica Neue', Helvetica, Arial, sans-serif",
+      "body": "'Helvetica Neue', Helvetica, Arial, sans-serif",
+      "mono": "'JetBrains Mono', 'IBM Plex Mono', monospace"
+    },
+    "hierarchy": {
+      "h1": "text-5xl sm:text-7xl lg:text-8xl font-medium tracking-tighter leading-none",
+      "h2": "text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight",
+      "h3": "text-xl sm:text-2xl font-medium tracking-tight",
+      "body": "text-base sm:text-lg text-[#666666] leading-relaxed",
+      "mono_label": "font-mono text-xs uppercase tracking-widest text-[#0A0A0A]"
+    },
+    "rules": [
+      "Headings must have tight tracking (tracking-tighter) to mimic classic Swiss editorial posters.",
+      "Never use center alignment for large blocks of text. Left-align almost everything to respect the grid.",
+      "Use mono font (JetBrains Mono) for tech skills, timeline dates, and small tags to inject an engineering feel."
+    ]
+  },
+  "layout_spacing": {
+    "container": "max-w-7xl mx-auto px-6 md:px-12",
+    "section_padding": "py-24 md:py-32",
+    "grid_system": "Bento/Tetris Grid Protocol. Use grid-cols-1 md:grid-cols-12 with gap-8 or gap-12.",
+    "rules": [
+      "Generous spacing: Use p-8 or p-12 for internal card padding.",
+      "Borders: 1px solid #E5E5E5 to define grids and sections. The 'Technical' Look.",
+      "Negative space is a first-class citizen. Leave empty columns in the 12-col grid to create tension."
+    ]
+  },
+  "interactions_motion": {
+    "scroll": "Smooth scrolling (use Lenis if possible, or CSS scroll-behavior: smooth).",
+    "hover": "Subtle. For buttons: invert colors (white bg to black bg, black text to white text). For cards: subtle border color darkening from #E5E5E5 to #0A0A0A, or a slight -translate-y-1. No bouncy animations.",
+    "links": "Underline on hover for text links. No background color shifts."
+  },
+  "assets": {
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1520529890308-f503006340b4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2OTV8MHwxfHNlYXJjaHwxfHxtaW5pbWFsJTIwYXJjaGl0ZWN0dXJlfGVufDB8fHxibGFja19hbmRfd2hpdGV8MTc4MzA4NzI3MHww&ixlib=rb-4.1.0&q=85",
+        "description": "Minimal white concrete stairs",
+        "category": "hero_abstract_accent",
+        "usage": "Use as a subtle overlay or an inset image in the hero section to convey 'structure' and 'systems' without being overt."
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1716363013751-78dc48b0403d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTJ8MHwxfHNlYXJjaHwyfHxhYnN0cmFjdCUyMGdlb21ldHJpYyUyMHNoYWRvd3xlbnwwfHx8YmxhY2tfYW5kX3doaXRlfDE3ODMwODcyNzB8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Abstract white geometric polygons",
+        "category": "projects_or_skills_background",
+        "usage": "Use as a muted background texture for a specific section, like the Contact or Projects section."
+      }
+    ],
+    "icons": {
+      "library": "lucide-react",
+      "style": "Stroke width 1.5, simple, geometric."
+    }
+  },
+  "components": {
+    "header": {
+      "layout": "Fixed top, bg-white/80 backdrop-blur-md, border-b border-[#E5E5E5].",
+      "elements": "Left: 'Chris Ruzario' in bold. Right: Nav links + CTA. Mobile: Hamburger menu."
+    },
+    "hero": {
+      "layout": "Min-height 80vh, flex flex-col justify-center.",
+      "typography": "Massive H1 for name: 'Chris Ruzario'. Tagline above it in mono font: 'BUSINESS ANALYTICS | DATA, STRATEGY & SYSTEMS'.",
+      "content": "Intro line: 'I turn data, business problems, and technology into clear insights and practical solutions.'",
+      "buttons": "Primary: 'View Projects' (black bg, white text). Secondary: 'Contact Me' (transparent bg, border border-black, black text)."
+    },
+    "about": {
+      "layout": "Grid 12 cols. Text spans col-span-8. Large typography for a statement.",
+      "style": "Clean, editorial layout. High contrast."
+    },
+    "skills": {
+      "layout": "Grid-based cards (Bento layout).",
+      "style": "Cardless or 1px border cards. Minimalist.",
+      "content": "List: Business Analysis, Data Analysis, SQL, Excel, Power BI, Python Basics, R, Dashboarding, Problem Solving, Communication.",
+      "tags": "Display these skills as pill-shaped tags or a stark list with mono-font numbering."
+    },
+    "projects": {
+      "layout": "3 large cards stacked or in a dynamic grid.",
+      "card_style": "1px solid border. Padding 8. Image placeholder/abstract image on top, clean text below.",
+      "content": "Tools used in mono font. Summary in secondary text. 'View Project' link with an arrow icon."
+    },
+    "experience": {
+      "layout": "Vertical timeline. Left column: Year/Date (mono font). Right column: Role and details.",
+      "style": "Use a 1px vertical line (#E5E5E5) connecting the nodes."
+    },
+    "contact": {
+      "layout": "Split grid. Left: Huge text 'Let's talk.' Right: Working Contact Form (Shadcn customized).",
+      "form_style": "Inputs with border-b only (no full box), or very minimal 1px border boxes. Sharp corners."
+    },
+    "footer": {
+      "layout": "Large padding (py-24). Top border.",
+      "content": "Name + 'Built with data, design, and curiosity.' Links to LinkedIn/GitHub."
+    }
+  },
+  "instructions_to_main_agent": [
+    "Strictly adhere to the pure black and white (with grey borders) palette. Do not add any gradients, shadows, or colors.",
+    "Use Lucide-React for icons.",
+    "Configure tailwind.config.js to set the default sans font to 'Helvetica Neue', Helvetica, Arial, sans-serif.",
+    "Ensure all interactive elements have a data-testid attribute in kebab-case based on their role.",
+    "Use standard Shadcn components for the Contact form, but override the default Vercel-like styles to be brutalist and flat (e.g., sharp corners rounded-none, 1px border).",
+    "For the hero layout, embrace asymmetry. Do not center everything. Left-align the massive H1 text.",
+    "Use raw HTML/Tailwind structure over predefined Shadcn cards for the main sections to ensure the asymmetrical, Swiss grid feel."
+  ]
+}
