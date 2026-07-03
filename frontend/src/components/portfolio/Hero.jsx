@@ -14,7 +14,7 @@ export const Hero = () => {
             {profile.tagline}
           </p>
           <h1 className="text-5xl sm:text-7xl lg:text-8xl font-medium tracking-tighter leading-[0.95]">
-            {profile.name}
+            {profile.name.replace(/\s+/g, "").toLowerCase()}
           </h1>
           <p className="mt-8 max-w-xl text-base sm:text-lg text-[#666] leading-relaxed">
             {profile.intro}
