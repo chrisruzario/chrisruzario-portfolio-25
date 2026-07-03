@@ -1,4 +1,4 @@
-import { Github, ArrowUpRight } from "lucide-react";
+import { Github } from "lucide-react";
 import { projects } from "@/data";
 
 export const Projects = () => {
@@ -66,17 +66,6 @@ export const Projects = () => {
                       className="inline-flex items-center gap-2 text-sm font-medium border-b border-transparent hover:border-[#0A0A0A] transition-colors"
                     >
                       <Github size={16} strokeWidth={1.5} /> GitHub
-                    </a>
-                  )}
-                  {p.demo && (
-                    <a
-                      href={p.demo}
-                      target="_blank"
-                      rel="noreferrer"
-                      data-testid={`project-demo-${i}`}
-                      className="inline-flex items-center gap-2 text-sm font-medium border-b border-transparent hover:border-[#0A0A0A] transition-colors"
-                    >
-                      Live Demo <ArrowUpRight size={16} strokeWidth={1.5} />
                     </a>
                   )}
                 </div>
