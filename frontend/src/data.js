@@ -45,7 +45,7 @@ export const projects = [
     summary:
       "Data cleaning, machine learning, and dashboard insights using taxi trip data.",
     tools: ["Python", "Pandas", "Scikit-learn", "Power BI"],
-    github: "#",     // <-- replace # with your GitHub repo link
+    github: "https://github.com/chrisruzario/NYC-Taxi-Fare-Prediction-Spark",     // <-- replace # with your GitHub repo link
     demo: "#",       // <-- replace # with your live demo link (or remove)
   },
   {
