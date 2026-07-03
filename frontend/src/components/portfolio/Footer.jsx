@@ -1,0 +1,33 @@
+import { Linkedin, Github, Mail } from "lucide-react";
+import { profile, contact } from "@/data";
+
+export const Footer = () => {
+  return (
+    <footer data-testid="site-footer" className="border-t border-[#E5E5E5] py-16 md:py-24">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+        <div>
+          <p className="text-2xl md:text-3xl font-medium tracking-tight">{profile.name}</p>
+          <p className="mt-3 font-mono text-xs uppercase tracking-widest text-[#666]">
+            Built with data, design, and curiosity.
+          </p>
+        </div>
+        <div className="flex items-center gap-6">
+          <a href={`mailto:${contact.email}`} data-testid="footer-email" aria-label="Email" className="hover:text-[#666] transition-colors">
+            <Mail size={20} strokeWidth={1.5} />
+          </a>
+          <a href={contact.linkedin} target="_blank" rel="noreferrer" data-testid="footer-linkedin" aria-label="LinkedIn" className="hover:text-[#666] transition-colors">
+            <Linkedin size={20} strokeWidth={1.5} />
+          </a>
+          <a href={contact.github} target="_blank" rel="noreferrer" data-testid="footer-github" aria-label="GitHub" className="hover:text-[#666] transition-colors">
+            <Github size={20} strokeWidth={1.5} />
+          </a>
+        </div>
+      </div>
+      <div className="max-w-7xl mx-auto px-6 md:px-12 mt-12">
+        <p className="font-mono text-xs text-[#999]">© {new Date().getFullYear()} {profile.name}. All rights reserved.</p>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
