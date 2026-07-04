@@ -9,13 +9,13 @@ export const Hero = () => {
       className="relative min-h-[85vh] flex flex-col justify-center pt-32 md:pt-40 pb-20 md:pb-28 max-w-7xl mx-auto px-6 md:px-12"
     >
       <div data-reveal>
-        <p className="font-mono text-xs md:text-sm uppercase tracking-[0.25em] text-[#666] mb-8">
+        <p className="font-mono text-xs md:text-sm uppercase tracking-[0.25em] text-[var(--muted)] mb-8">
           {profile.tagline}
         </p>
         <h1 className="text-6xl sm:text-8xl lg:text-9xl font-medium tracking-tighter leading-[0.9] max-w-5xl">
           {profile.name}
         </h1>
-        <p className="mt-10 max-w-2xl text-lg sm:text-xl text-[#666] leading-relaxed">
+        <p className="mt-10 max-w-2xl text-lg sm:text-xl text-[var(--muted)] leading-relaxed">
           {profile.intro}
         </p>
 
@@ -23,7 +23,7 @@ export const Hero = () => {
           <a
             href="#projects"
             data-testid="hero-view-projects-btn"
-            className="group inline-flex items-center gap-2 bg-[#0A0A0A] text-white px-8 py-4 text-sm font-medium border border-[#0A0A0A] hover:bg-white hover:text-[#0A0A0A] transition-colors duration-300"
+            className="group inline-flex items-center gap-2 bg-[var(--fg)] text-[var(--bg)] px-8 py-4 text-sm font-medium border border-[var(--fg)] hover:bg-[var(--bg)] hover:text-[var(--fg)] transition-colors duration-300"
           >
             View Projects
             <ArrowRight size={16} strokeWidth={1.5} className="group-hover:translate-x-1 transition-transform" />
@@ -31,7 +31,7 @@ export const Hero = () => {
           <a
             href="#contact"
             data-testid="hero-contact-btn"
-            className="inline-flex items-center gap-2 border border-[#0A0A0A] px-8 py-4 text-sm font-medium hover:bg-[#0A0A0A] hover:text-white transition-colors duration-300"
+            className="inline-flex items-center gap-2 border border-[var(--fg)] px-8 py-4 text-sm font-medium hover:bg-[var(--fg)] hover:text-[var(--bg)] transition-colors duration-300"
           >
             Contact Me
           </a>

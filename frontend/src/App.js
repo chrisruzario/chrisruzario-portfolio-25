@@ -30,7 +30,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App bg-white text-[#0A0A0A]" data-testid="portfolio-root">
+    <div className="App bg-[var(--bg)] text-[var(--fg)]" data-testid="portfolio-root">
       <Navbar />
       <main>
         <Hero />

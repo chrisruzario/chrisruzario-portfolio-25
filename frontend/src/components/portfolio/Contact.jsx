@@ -31,30 +31,30 @@ export const Contact = () => {
   };
 
   const inputCls =
-    "w-full bg-transparent border border-[#E5E5E5] px-4 py-3 text-base focus:border-[#0A0A0A] focus:outline-none transition-colors placeholder:text-[#999]";
+    "w-full bg-transparent border border-[var(--line)] px-4 py-3 text-base focus:border-[var(--fg)] focus:outline-none transition-colors placeholder:text-[var(--muted)]";
 
   return (
     <section
       id="contact"
       data-testid="contact-section"
-      className="border-t border-[#E5E5E5] py-24 md:py-32"
+      className="border-t border-[var(--line)] py-24 md:py-32"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-12 gap-12">
         <div className="md:col-span-5" data-reveal>
-          <p className="font-mono text-xs uppercase tracking-widest text-[#666] mb-6">
+          <p className="font-mono text-xs uppercase tracking-widest text-[var(--muted)] mb-6">
             05 / Contact
           </p>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tighter leading-none">
             Let's talk.
           </h2>
           <div className="mt-10 space-y-4">
-            <a href={`mailto:${contact.email}`} data-testid="contact-email-link" className="group flex items-center gap-3 text-lg hover:text-[#666] transition-colors">
+            <a href={`mailto:${contact.email}`} data-testid="contact-email-link" className="group flex items-center gap-3 text-lg hover:text-[var(--muted)] transition-colors">
               <Mail size={18} strokeWidth={1.5} /> {contact.email}
             </a>
-            <a href={contact.linkedin} target="_blank" rel="noreferrer" data-testid="contact-linkedin-link" className="group flex items-center gap-3 text-lg hover:text-[#666] transition-colors">
+            <a href={contact.linkedin} target="_blank" rel="noreferrer" data-testid="contact-linkedin-link" className="group flex items-center gap-3 text-lg hover:text-[var(--muted)] transition-colors">
               <Linkedin size={18} strokeWidth={1.5} /> LinkedIn
             </a>
-            <a href={contact.github} target="_blank" rel="noreferrer" data-testid="contact-github-link" className="group flex items-center gap-3 text-lg hover:text-[#666] transition-colors">
+            <a href={contact.github} target="_blank" rel="noreferrer" data-testid="contact-github-link" className="group flex items-center gap-3 text-lg hover:text-[var(--muted)] transition-colors">
               <Github size={18} strokeWidth={1.5} /> GitHub
             </a>
           </div>
@@ -92,7 +92,7 @@ export const Contact = () => {
               type="submit"
               disabled={loading}
               data-testid="contact-submit-btn"
-              className="group inline-flex items-center gap-2 bg-[#0A0A0A] text-white px-7 py-3.5 text-sm font-medium border border-[#0A0A0A] hover:bg-white hover:text-[#0A0A0A] transition-colors duration-300 disabled:opacity-50"
+              className="group inline-flex items-center gap-2 bg-[var(--fg)] text-[var(--bg)] px-7 py-3.5 text-sm font-medium border border-[var(--fg)] hover:bg-[var(--bg)] hover:text-[var(--fg)] transition-colors duration-300 disabled:opacity-50"
             >
               {loading ? "Sending..." : "Send Message"}
               <ArrowRight size={16} strokeWidth={1.5} className="group-hover:translate-x-1 transition-transform" />

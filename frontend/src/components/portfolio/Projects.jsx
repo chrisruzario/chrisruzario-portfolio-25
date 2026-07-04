@@ -6,12 +6,12 @@ export const Projects = () => {
     <section
       id="projects"
       data-testid="projects-section"
-      className="border-t border-[#E5E5E5] py-24 md:py-32"
+      className="border-t border-[var(--line)] py-24 md:py-32"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 mb-14">
           <div className="md:col-span-3" data-reveal>
-            <p className="font-mono text-xs uppercase tracking-widest text-[#666]">
+            <p className="font-mono text-xs uppercase tracking-widest text-[var(--muted)]">
               03 / Projects
             </p>
           </div>
@@ -28,11 +28,11 @@ export const Projects = () => {
               key={p.title}
               data-testid={`project-card-${i}`}
               data-reveal
-              className="group border border-[#E5E5E5] hover:border-[#0A0A0A] transition-colors duration-300"
+              className="group border border-[var(--line)] hover:border-[var(--fg)] transition-colors duration-300"
             >
               <div className="grid grid-cols-1 md:grid-cols-12 gap-8 p-8 md:p-12">
                 <div className="md:col-span-1 hidden md:block">
-                  <span className="font-mono text-sm text-[#666]">
+                  <span className="font-mono text-sm text-[var(--muted)]">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                 </div>
@@ -41,14 +41,14 @@ export const Projects = () => {
                   <h3 className="text-2xl sm:text-3xl font-medium tracking-tight">
                     {p.title}
                   </h3>
-                  <p className="mt-4 text-base sm:text-lg text-[#666] leading-relaxed max-w-xl">
+                  <p className="mt-4 text-base sm:text-lg text-[var(--muted)] leading-relaxed max-w-xl">
                     {p.summary}
                   </p>
                   <div className="mt-6 flex flex-wrap gap-2">
                     {p.tools.map((t) => (
                       <span
                         key={t}
-                        className="font-mono text-xs uppercase tracking-widest border border-[#E5E5E5] px-3 py-1.5 text-[#0A0A0A]"
+                        className="font-mono text-xs uppercase tracking-widest border border-[var(--line)] px-3 py-1.5 text-[var(--fg)]"
                       >
                         {t}
                       </span>
@@ -63,7 +63,7 @@ export const Projects = () => {
                       target="_blank"
                       rel="noreferrer"
                       data-testid={`project-github-${i}`}
-                      className="inline-flex items-center gap-2 text-sm font-medium border-b border-transparent hover:border-[#0A0A0A] transition-colors"
+                      className="inline-flex items-center gap-2 text-sm font-medium border-b border-transparent hover:border-[var(--fg)] transition-colors"
                     >
                       <Github size={16} strokeWidth={1.5} /> GitHub
                     </a>

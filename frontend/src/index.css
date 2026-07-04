@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --bg: #ffffff;
+    --fg: #0a0a0a;
+    --muted: #666666;
+    --line: #e5e5e5;
+}
+
+.dark {
+    --bg: #0a0a0a;
+    --fg: #ffffff;
+    --muted: #9b9b9b;
+    --line: #262626;
+}
+
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 80px;
@@ -12,8 +26,9 @@ body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #ffffff;
-    color: #0a0a0a;
+    background-color: var(--bg);
+    color: var(--fg);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 code,
@@ -22,8 +37,13 @@ code,
 }
 
 ::selection {
-    background: #0a0a0a;
-    color: #ffffff;
+    background: var(--fg);
+    color: var(--bg);
+}
+
+/* Translucent navbar surface that adapts to theme */
+.surface-blur {
+    background-color: color-mix(in srgb, var(--bg) 85%, transparent);
 }
 
 /* Hide the injected "Made with Emergent" badge */

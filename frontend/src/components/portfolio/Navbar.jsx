@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 import { profile } from "@/data";
 
 const links = [
@@ -13,6 +13,9 @@ const links = [
 export const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [dark, setDark] = useState(
+    typeof document !== "undefined" && document.documentElement.classList.contains("dark")
+  );
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -20,11 +23,20 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const toggleTheme = () => {
+    const next = !dark;
+    setDark(next);
+    document.documentElement.classList.toggle("dark", next);
+    try {
+      localStorage.setItem("theme", next ? "dark" : "light");
+    } catch (e) {}
+  };
+
   return (
     <header
       data-testid="site-header"
       className={`fixed top-0 inset-x-0 z-50 border-b transition-colors duration-300 ${
-        scrolled ? "bg-white/85 backdrop-blur-md border-[#E5E5E5]" : "bg-transparent border-transparent"
+        scrolled ? "surface-blur backdrop-blur-md border-[var(--line)]" : "bg-transparent border-transparent"
       }`}
     >
       <nav className="max-w-7xl mx-auto px-6 md:px-12 h-16 md:h-20 flex items-center justify-between">
@@ -42,25 +54,43 @@ export const Navbar = () => {
               key={l.href}
               href={l.href}
               data-testid={`nav-link-${l.label.toLowerCase()}`}
-              className="font-mono text-xs uppercase tracking-widest text-[#0A0A0A] hover:text-[#666] transition-colors"
+              className="font-mono text-xs uppercase tracking-widest text-[var(--fg)] hover:text-[var(--muted)] transition-colors"
             >
               {l.label}
             </a>
           ))}
+          <button
+            onClick={toggleTheme}
+            data-testid="theme-toggle"
+            aria-label="Toggle dark mode"
+            className="p-2 border border-[var(--line)] hover:border-[var(--fg)] transition-colors"
+          >
+            {dark ? <Sun size={16} strokeWidth={1.5} /> : <Moon size={16} strokeWidth={1.5} />}
+          </button>
         </div>
 
-        <button
-          data-testid="nav-menu-toggle"
-          className="md:hidden p-2 -mr-2"
-          onClick={() => setOpen((v) => !v)}
-          aria-label="Toggle menu"
-        >
-          {open ? <X size={22} strokeWidth={1.5} /> : <Menu size={22} strokeWidth={1.5} />}
-        </button>
+        <div className="flex items-center gap-2 md:hidden">
+          <button
+            onClick={toggleTheme}
+            data-testid="theme-toggle-mobile"
+            aria-label="Toggle dark mode"
+            className="p-2"
+          >
+            {dark ? <Sun size={20} strokeWidth={1.5} /> : <Moon size={20} strokeWidth={1.5} />}
+          </button>
+          <button
+            data-testid="nav-menu-toggle"
+            className="p-2 -mr-2"
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Toggle menu"
+          >
+            {open ? <X size={22} strokeWidth={1.5} /> : <Menu size={22} strokeWidth={1.5} />}
+          </button>
+        </div>
       </nav>
 
       {open && (
-        <div className="md:hidden bg-white border-t border-[#E5E5E5]" data-testid="mobile-menu">
+        <div className="md:hidden bg-[var(--bg)] border-t border-[var(--line)]" data-testid="mobile-menu">
           <div className="px-6 py-4 flex flex-col gap-4">
             {links.map((l) => (
               <a
