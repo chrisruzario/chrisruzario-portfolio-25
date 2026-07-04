@@ -40,10 +40,10 @@ export const Hero = () => {
         </div>
 
         <div className="md:col-span-4" data-reveal>
-          <div className="aspect-[3/4] w-full overflow-hidden border border-[#E5E5E5] grayscale">
+          <div className="aspect-[3/4] w-full overflow-hidden border border-[#E5E5E5]">
             <img
-              src="https://images.unsplash.com/photo-1520529890308-f503006340b4?crop=entropy&cs=srgb&fm=jpg&q=85&w=800"
-              alt="Minimal architectural structure"
+              src="https://customer-assets.emergentagent.com/job_data-insights-pro-59/artifacts/pgfap9n6_Untitled%20design%20%284%29.png"
+              alt="Abstract gradient"
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
             />
           </div>
