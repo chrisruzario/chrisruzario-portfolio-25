@@ -179,7 +179,7 @@ export const SkillsGraph = () => {
       data-testid="skills-graph"
       className="relative w-full h-[480px] sm:h-[520px] md:h-[600px] touch-none"
     >
-      <canvas ref={canvasRef} className="absolute inset-0" aria-hidden="true" />
+      <canvas ref={canvasRef} data-testid="skills-particle-canvas" className="absolute inset-0" aria-hidden="true" />
       {skills.map((skill, i) => (
         <button
           key={skill}
