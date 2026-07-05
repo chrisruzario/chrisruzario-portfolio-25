@@ -24,7 +24,7 @@ export const Footer = () => {
         </div>
       </div>
       <div className="max-w-7xl mx-auto px-6 md:px-12 mt-12">
-        <p className="font-mono text-xs text-[var(--muted)]">© {new Date().getFullYear()} {profile.name}. All rights reserved.</p>
+        <p className="font-mono text-xs text-[var(--muted)]">© {new Date().getFullYear()} {profile.name.replace(/\s+/g, "").toLowerCase()}. All rights reserved.</p>
       </div>
     </footer>
   );
