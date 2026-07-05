@@ -22,14 +22,11 @@ export const SkillsGraph = () => {
     const pad = 80;
 
     let fg = "10,10,10";
-    const hexToRgb = (hex) => {
-      const s = hex.trim().replace("#", "");
-      if (s.length !== 6) return "10,10,10";
-      const n = parseInt(s, 16);
-      return `${(n >> 16) & 255},${(n >> 8) & 255},${n & 255}`;
-    };
     const refreshColor = () => {
-      fg = hexToRgb(getComputedStyle(document.documentElement).getPropertyValue("--fg") || "#0a0a0a");
+      // Read the actual resolved text colour — always valid in both themes.
+      const c = getComputedStyle(document.body).color; // e.g. "rgb(255, 255, 255)"
+      const m = c.match(/\d+/g);
+      fg = m && m.length >= 3 ? `${m[0]},${m[1]},${m[2]}` : "128,128,128";
     };
     refreshColor();
     const themeObserver = new MutationObserver(refreshColor);
@@ -66,6 +63,7 @@ export const SkillsGraph = () => {
     };
 
     const frame = () => {
+      refreshColor();
       const nodes = nodesRef.current;
 
       nodes.forEach((n, i) => {
