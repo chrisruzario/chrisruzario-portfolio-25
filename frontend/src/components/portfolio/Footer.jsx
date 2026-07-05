@@ -6,9 +6,9 @@ export const Footer = () => {
     <footer data-testid="site-footer" className="border-t border-[var(--line)] py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
         <div>
-          <p className="text-2xl md:text-3xl font-medium tracking-tight">{profile.name}</p>
+          <p className="text-2xl md:text-3xl font-medium tracking-tight">{profile.name.replace(/\s+/g, "").toLowerCase()}</p>
           <p className="mt-3 font-mono text-xs uppercase tracking-widest text-[var(--muted)]">
-            Built with data, design, and curiosity.
+            If you don't risk the bad meal, you will never get the magical one.
           </p>
         </div>
         <div className="flex items-center gap-6">
