@@ -70,7 +70,7 @@ export const projects = [
 export const experience = [
   {
     period: "2025 — Present",
-    role: "Business Analytics Student",
+    role: "MSc in Business Analytics",
     company: "University of Limerick",       // <-- edit
     detail:
       "Focusing on data analysis, statistics, dashboarding and applied business strategy.",
@@ -78,7 +78,7 @@ export const experience = [
  
   {
     period: "2021 — 2025",
-    role: "Computer Engineering",
+    role: "B.E in Computer Engineering",
     company: "Don Bosco Institute Of Technology",        // <-- edit
     detail:
       "Foundation in programming, systems and problem solving that powers my analytics work.",
