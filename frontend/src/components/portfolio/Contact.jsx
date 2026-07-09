@@ -1,30 +1,67 @@
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "sonner";
-import { Mail, Linkedin, Github, ArrowRight } from "lucide-react";
+import { Mail, Linkedin, Github, ArrowRight, Loader2, CheckCircle2, AlertCircle } from "lucide-react";
 import { contact } from "@/data";
 
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+const BACKEND = process.env.REACT_APP_BACKEND_URL;
 
 export const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState(null); // { type: "success" | "error", text }
 
-  const onChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+  const onChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+    if (status) setStatus(null);
+  };
+
+  const isEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (!form.name || !form.email || !form.message) {
+    const name = form.name.trim();
+    const email = form.email.trim();
+    const message = form.message.trim();
+
+    if (!name || !email || !message) {
+      setStatus({ type: "error", text: "Please fill in all fields." });
       toast.error("Please fill in all fields.");
       return;
     }
+    if (!isEmail(email)) {
+      setStatus({ type: "error", text: "Please enter a valid email address." });
+      toast.error("Please enter a valid email address.");
+      return;
+    }
+    if (!BACKEND) {
+      setStatus({ type: "error", text: "Contact service isn't configured. Please email me directly." });
+      toast.error("Contact service unavailable.");
+      return;
+    }
+
     setLoading(true);
+    setStatus(null);
     try {
-      await axios.post(`${API}/contact`, form);
+      await axios.post(
+        `${BACKEND}/api/contact`,
+        { name, email, message },
+        { timeout: 60000, headers: { "Content-Type": "application/json" } }
+      );
+      setStatus({ type: "success", text: "Message sent — thanks for reaching out! I'll get back to you soon." });
       toast.success("Message sent — thanks for reaching out!");
       setForm({ name: "", email: "", message: "" });
     } catch (err) {
-      toast.error("Something went wrong. Please try again.");
+      let text = "Something went wrong. Please try again, or email me directly.";
+      if (err.code === "ECONNABORTED") {
+        text = "The server took too long to respond. Please try again in a moment.";
+      } else if (err.response) {
+        text = `Server error (${err.response.status}). Please try again shortly.`;
+      } else if (err.request) {
+        text = "Couldn't reach the server. Check your connection and try again.";
+      }
+      setStatus({ type: "error", text });
+      toast.error(text);
     } finally {
       setLoading(false);
     }
@@ -61,7 +98,7 @@ export const Contact = () => {
         </div>
 
         <div className="md:col-span-7" data-reveal>
-          <form onSubmit={onSubmit} data-testid="contact-form" className="space-y-4">
+          <form onSubmit={onSubmit} data-testid="contact-form" className="space-y-4" noValidate>
             <input
               name="name"
               value={form.name}
@@ -88,14 +125,41 @@ export const Contact = () => {
               data-testid="contact-message-input"
               className={`${inputCls} resize-none`}
             />
+
+            {status && (
+              <div
+                data-testid="contact-status"
+                className={`flex items-start gap-2 border px-4 py-3 text-sm ${
+                  status.type === "success"
+                    ? "border-[var(--fg)] text-[var(--fg)]"
+                    : "border-[var(--muted)] text-[var(--muted)]"
+                }`}
+              >
+                {status.type === "success" ? (
+                  <CheckCircle2 size={16} strokeWidth={1.5} className="mt-0.5 shrink-0" />
+                ) : (
+                  <AlertCircle size={16} strokeWidth={1.5} className="mt-0.5 shrink-0" />
+                )}
+                <span>{status.text}</span>
+              </div>
+            )}
+
             <button
               type="submit"
               disabled={loading}
               data-testid="contact-submit-btn"
-              className="group inline-flex items-center gap-2 bg-[var(--fg)] text-[var(--bg)] px-7 py-3.5 text-sm font-medium border border-[var(--fg)] hover:bg-[var(--bg)] hover:text-[var(--fg)] transition-colors duration-300 disabled:opacity-50"
+              className="group inline-flex items-center gap-2 bg-[var(--fg)] text-[var(--bg)] px-7 py-3.5 text-sm font-medium border border-[var(--fg)] hover:bg-[var(--bg)] hover:text-[var(--fg)] transition-colors duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              {loading ? "Sending..." : "Send Message"}
-              <ArrowRight size={16} strokeWidth={1.5} className="group-hover:translate-x-1 transition-transform" />
+              {loading ? (
+                <>
+                  <Loader2 size={16} strokeWidth={1.5} className="animate-spin" /> Sending...
+                </>
+              ) : (
+                <>
+                  Send Message
+                  <ArrowRight size={16} strokeWidth={1.5} className="group-hover:translate-x-1 transition-transform" />
+                </>
+              )}
             </button>
           </form>
         </div>
